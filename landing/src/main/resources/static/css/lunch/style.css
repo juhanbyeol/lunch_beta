@@ -33,15 +33,23 @@ textarea:focus, input:focus{outline:none;}
 .hidden{display: none;}
 
 /* 스타일 공통 */
+/*스크롤*/
+html::-webkit-scrollbar {width: .4rem;  /* 스크롤바의 너비 */}
+html::-webkit-scrollbar-thumb {height: 30%;border-radius:1rem; /* 스크롤바의 길이 */background: #a9a9a9; /* 스크롤바의 색상 */}
+html::-webkit-scrollbar-track {background: rgba(80 80 80 / 10%);  /*스크롤바 뒷 배경 색상*/}
+
+/* 폰트 */
 .bold{font-weight:500;}
 
 h1{font-size:2rem;}
 h2{font-size:1.6rem;}
 h3{width:100%;font-size:1.4rem;margin-top:1rem;}
 
+/* 셀렉박스 */
 .aSelect{font-size: 1rem;text-align: center;border-radius: 0.2rem;}
 .Select1{width: 5rem;height:2rem;margin-right: 0.4rem;border: 1px solid #CCC;}
 
+/* 버튼 */
 .btn{font-size: 1rem;text-align: center;border-radius: 0.2rem;}
 .btn1{width: 5rem;height:2rem;background: #FF9800;color: #fff;}
 .btn2{width:10%;background: #FF9800;color: #fff;}
@@ -63,17 +71,17 @@ background: linear-gradient(rgb(30 2 2 / 60%), rgb(30 2 2 / 60%)), url(/images/l
 /* 각 건물별 메뉴표 */
 .boardBox{width: 100%;border: 1px solid #eee;border-left: none;border-right: none;}
 .menuBoard{width:100%;}
-.menuBoard .menuLunch{width: 100%;height: 22rem; padding:1rem;}
+.menuBoard .menuLunch{width: 100%;height: auto; padding:1rem;margin-top:2rem;overflow: hidden;border-bottom: 1rem solid #f1f1f1;}
 .menuBoard .menuLunch .lunchTit{display: block;width: 100%;height: 2rem;font-size: 1.4rem;font-weight:700;margin-bottom:1rem;}
 
-.lunchFood{display: flex;flex-wrap: wrap;}
+.lunchFood{display: flex;flex-wrap: wrap;overflow:hidden;}
 .lunchImg{height: 17rem;width: 48%;margin-right: 2%;background:#000;}
 .lunchRight{width:50%;height:14rem;display:flex;flex-wrap:wrap;}
 
 .lunchDataBox{width:100%;display:flex;flex-wrap:wrap;align-items: center;}
 .lunchDataBox1{height:2.5rem;}
-.lunchDataBox2{justify-content: flex-end;margin: 0.5rem 0;}
-.lunchDataBox3{height:9rem;}
+.lunchDataBox2{margin: 0.5rem 0;justify-content: space-around;}
+.lunchDataBox3{width: 100%;height: auto;padding: 1rem 0;}
 
 .lunchStateTit{width:100%;display:flex;justify-content: space-between;border-bottom: 1px solid #ccc;}
 .lunchDataTit{width:100%;height: 2rem;font-size: 1.2rem;font-weight: 700;}
@@ -100,10 +108,10 @@ section{width: 100%;}
 /*공통*/
 h2{font-size:1.4rem;}
 h3{padding: 0 0.2rem;}
-.btn1{width:42%; height:3rem; padding: 0 1rem;}
+.btn1{width:45%; height:3rem; padding: 0 1rem;}
 .btn2{width:30%;background: #FF9800;color: #fff;}
 .btn3{width: 4rem;height: 2rem;line-height: 0rem;border: 1px solid #ccc;}
-.Select1{width: 57%;height:3rem;margin-right: 0.1rem;border: 1px solid #CCC;background:url(/images/lunch/ico_select01.png) no-repeat 95% center;}
+.Select1{width: 54%;height:3rem;margin-right: 0.1rem;border: 1px solid #CCC;background:url(/images/lunch/ico_select01.png) no-repeat 95% center;}
 .Select1 option {padding: 0.5rem;}
 
 /* 배너 */
@@ -112,13 +120,13 @@ h3{padding: 0 0.2rem;}
 .topBannerTxt2{height: 38%;font-size:1.4rem;font-weight: 400;}
 
 /* 메뉴 */
-.menuBoard .menuLunch{height: 42rem;margin-top:2rem;border-bottom: 1rem solid #f1f1f1;padding:0;}
+.menuBoard .menuLunch{padding:0;}
 .menuBoard .menuLunch .lunchTit {height: 2rem;margin: 0;padding:0 0.2rem;}
-.lunchImg{width:100%;margin:0;}
-.lunchRight{width:100%;padding: 0 0.2rem;}
+.lunchImg{width: 100vw;height: 60vw;margin:0;}
+.lunchRight{width:100%;height: auto;padding: 0 0.2rem;}
 
 .lunchStateTit{font-size:1.2rem;padding:0 0.2rem;border-bottom:none;}
-.lunchDataTit{height:1rem;}
+.lunchDataTit{height:2rem;}
 .lunchDataBox1 {height: 2rem;padding:0 0.2rem;}
 .lunchData2{width: 100%;justify-content: right;}
 .lunchData3{width:100%;line-height: 2rem;justify-content: right;}
@@ -144,7 +152,7 @@ h3{padding: 0 0.2rem;}
 .comment li:nth-child(2n-1){background-color:#f1f1f1;}
 .comt{width:100%;}
 .comt1{font-weight:500;color:#2a2a2a;font-size:1.1rem;}
-.comt2{padding: 0.2rem;}
+.comt2{padding: 0.2rem;white-space: pre-line}
 .comt3{text-align:right;font-size:.9rem;color:#ccc;font-weight:400;}
 .comt4{text-align: right;font-size: .9rem;display: flex;justify-content: flex-end;margin-top: 0.5rem;}
 .comt4 .btn3 .likeIco{font-size:1.1rem;}
