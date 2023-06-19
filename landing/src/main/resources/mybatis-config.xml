@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+        <setting name="jdbcTypeForNull" value="NULL" />
+        <setting name="multipleResultSetsEnabled" value="true" />
+    </settings>
+
+    <typeAliases>
+   		<typeAlias alias="String" type="java.lang.String"/>
+		<typeAlias alias="map" type="java.util.Map"/>
+		<typeAlias alias="hash" type="java.util.HashMap"/>
+		<typeAlias alias="vo" type="java.util.Map"/>
+		<typeAlias alias="camelMap" type="com.ione.landing.cmm.util.CamelMap"/>
+		
+		<typeAlias alias="BoardVO" type="com.ione.landing.cmm.vo.BoardVO"/>
+		<typeAlias alias="BoardCommentVO" type="com.ione.landing.cmm.vo.BoardCommentVO"/>
+    </typeAliases>
+   
+    
+ 
+    
+</configuration>

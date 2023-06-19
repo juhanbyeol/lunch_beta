@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ione.landing.api.mapper.LunchMapper">
+	<!-- 게시글 조회 -->
+	<select id="selectBoard" parameterType="BoardVO" resultType="camelMap">
+		SELECT /*selectBoard*/
+		       board_sn 
+		     , ROW_NUMBER() OVER(ORDER BY board_sn) AS rownum
+		     , title 
+		     , cn
+		     , IFNULL(food1, '-') AS food1 
+		     , IFNULL(food2, '-') AS food2 
+		     , IFNULL(food3, '-') AS food3 
+		     , IFNULL(food4, '-') AS food4 
+		     , IFNULL(food5, '-') AS food5 
+		     , IFNULL(food6, '-') AS food6 
+		     , CASE WHEN food_state = 1 THEN '쾌적함' 
+		       WHEN food_state = 2 THEN '적당함'
+		       ELSE '복잡함' END AS food_state_nm
+		     , food_state
+		     , IFNULL(DATE_FORMAT(regist_dt, '%Y-%m-%d %H:%i'), '-') AS regist_dt
+		     , IFNULL(concat(DATE_FORMAT(update_dt, '%p %h시 %i분'), ' 기준'), '-')  AS update_dt
+		     , SUM(1) OVER(PARTITION BY 0) AS tot_rowcount
+		 FROM tb_board
+		WHERE delete_at = 'N'
+		ORDER BY regist_dt DESC 
+<!-- 		LIMIT #{firstIndex}, #{recordCountPerPage} -->
+	</select>
+	
+	<!-- 댓글 조회 -->
+	<select id="selectBoardComment" parameterType="BoardCommentVO" resultType="camelMap">
+		SELECT /*selectBoardComment*/
+		       comment_sn 
+		     , ROW_NUMBER() OVER(ORDER BY comment_sn) AS rownum
+		     , IFNULL(ncnm, '-') AS ncnm 
+		     , IFNULL(cn, '-') AS cn 
+		     , IFNULL(DATE_FORMAT(regist_dt, '%Y-%m-%d %H:%i'), '-') AS regist_dt 
+		     , IFNULL(DATE_FORMAT(update_dt, '%Y-%m-%d %H:%i'), '-')  AS update_dt
+		     , like_cnt
+		     , SUM(1) OVER(PARTITION BY 0) AS tot_rowcount
+		 FROM tb_board_comment
+		WHERE delete_at = 'N'
+		ORDER BY regist_dt DESC 
+<!-- 		LIMIT #{firstIndex}, #{recordCountPerPage} -->
+	</select>
+	
+	<!-- 댓글 등록 -->
+	<insert id="insertBoardComment" parameterType="camelMap">
+		INSERT /*insertBoardComment*/
+		       INTO tb_board_comment (
+		        ncnm
+		     , cn
+		     , regist_dt
+	    ) VALUE (
+	    	  #{ncnm}
+	    	, #{cn}
+	    	, NOW()
+	    ) 
+	</insert>
+	
+	<!-- 게시글 상태변경 -->
+	<update id="updateBoardState" parameterType="camelMap">
+		UPDATE /*updateBoardState*/
+		       tb_board
+		   SET food_state = #{foodState}
+		     , update_dt = NOW()
+		 WHERE board_sn = #{boardSn}
+	</update>
+	
+	<!-- 게시글 삭제 -->
+	<update id="deleteBoard" parameterType="camelMap">
+		UPDATE /*deleteBoard*/
+		       tb_board
+		   SET delete_at = 'N'
+		     , update_dt = NOW()
+		     , delete_dt = NOW()
+		 WHERE board_sn = #{boardSn}
+	</update>
+	
+	<!-- 댓글 삭제 -->
+	<update id="deleteBoardComment" parameterType="camelMap">
+		UPDATE /*deleteBoardComment*/
+		       tb_board_comment
+		   SET delete_at = 'N'
+		     , update_dt = NOW()
+		     , delete_dt = NOW()
+		 WHERE comment_sn = #{commentSn}
+	</update>
+	
+	<update id="updateBoardCommentLikeUp" parameterType="camelMap">
+		UPDATE /*updateBoardCommentLikeUp*/
+		       tb_board_comment
+		   SET like_cnt = like_cnt + 1
+		     , update_dt = NOW()
+		 WHERE comment_sn = #{commentSn}
+	</update>
+	
+	<update id="updateBoardCommentLikeDown" parameterType="camelMap">
+		UPDATE /*updateBoardCommentLikeDown*/
+		       tb_board_comment
+		   SET like_cnt = like_cnt - 1
+		     , update_dt = NOW()
+		 WHERE comment_sn = #{commentSn}
+	</update>
+</mapper>
+
+
+

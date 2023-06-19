@@ -1,0 +1,1 @@
+const HOMIE_SERVER_API_URL = "/";

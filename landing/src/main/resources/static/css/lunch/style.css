@@ -1,0 +1,152 @@
+@charset "utf-8";
+/* Font 설정 Noto Sans KR */
+@font-face {
+   font-family: "Noto Sans KR";
+   src: url("/font/NotoSansKR-Regular.woff") format("woff");
+   src: url("/font/NotoSansKR-Regular.ttf") format("truetype");
+   src: url("/font/NotoSansKR-Regular.otf") format("truetype");
+   font-weight: normal;
+}
+
+*,html,body{box-sizing: border-box;color:#707070; font-family: 'Noto Sans KR', sans-serif;}
+html, body, li{overflow-x: hidden; width: 100%;height: auto;}
+html,body,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,p,div,pre{ margin: 0; padding: 0; }
+
+ul,ol,li{list-style: none;}
+
+a{ display: block; text-decoration: none; color:inherit; }
+
+img{ border:none; }
+select,button{ background-color:transparent;border: none; outline:none;-o-appearance: none;-webkit-appearance: none;-moz-appearance: none;appearance: none;}
+
+input[type="text"],input[type="password"],input[type="search"], input[type="email"], input[type="tel"]{border:1px solid #707070; text-indent:5px;
+/* text cursor color */caret-color : #707070;border-radius: 2px;}
+input[type="password"]{border-radius: 2px;text-indent:5px;caret-color : auto;}
+
+
+button, input[type="submit"],
+input[type="reset"],input[type="button"],button { cursor: pointer;}
+
+footer{display: block; margin: 0; padding: 0;}
+textarea{border:none; resize: none; padding: 2vw 2vw; font-size:14px;}
+textarea:focus, input:focus{outline:none;}
+.hidden{display: none;}
+
+/* 스타일 공통 */
+.bold{font-weight:500;}
+
+h1{font-size:2rem;}
+h2{font-size:1.6rem;}
+h3{width:100%;font-size:1.4rem;margin-top:1rem;}
+
+.aSelect{font-size: 1rem;text-align: center;border-radius: 0.2rem;}
+.Select1{width: 5rem;height:2rem;margin-right: 0.4rem;border: 1px solid #CCC;}
+
+.btn{font-size: 1rem;text-align: center;border-radius: 0.2rem;}
+.btn1{width: 5rem;height:2rem;background: #FF9800;color: #fff;}
+.btn2{width:10%;background: #FF9800;color: #fff;}
+
+/* Wrap */
+/* 전체 컨텐츠 감싸는 랩*/
+#wrap{display: flex;flex-wrap: wrap;width: 100%;flex-direction: column;-webkit-box-align: center;}
+
+/* 각 컨텐츠별 박스 */
+section{width: 1024px;margin: 0 auto;display: flex;align-items: center;flex-wrap: wrap;}
+
+/* 상단배너 */
+.topBanner{width:100%;height:60vh;background:#000;align-items: center;display: flex;justify-content: center;flex-wrap:wrap;
+background: linear-gradient(rgb(30 2 2 / 60%), rgb(30 2 2 / 60%)), url(/images/lunch/img_lunch.jpg) no-repeat center / cover;}
+.topBannerTxt{width:100%;}
+.topBannerTxt1{color:#fff;font-size:2.4rem;text-align:center;height: 20%;align-items: flex-end;display: flex;justify-content: center;}
+.topBannerTxt2{height:20%; color:#fff;font-size:1.6rem;text-align:center;}
+
+/* 각 건물별 메뉴표 */
+.boardBox{width: 100%;border: 1px solid #eee;border-left: none;border-right: none;}
+.menuBoard{width:100%;}
+.menuBoard .menuLunch{width: 100%;height: 22rem; padding:1rem;}
+.menuBoard .menuLunch .lunchTit{display: block;width: 100%;height: 2rem;font-size: 1.4rem;font-weight:700;margin-bottom:1rem;}
+
+.lunchFood{display: flex;flex-wrap: wrap;}
+.lunchImg{height: 17rem;width: 48%;margin-right: 2%;background:#000;}
+.lunchRight{width:50%;height:14rem;display:flex;flex-wrap:wrap;}
+
+.lunchDataBox{width:100%;display:flex;flex-wrap:wrap;align-items: center;}
+.lunchDataBox1{height:2.5rem;}
+.lunchDataBox2{justify-content: flex-end;margin: 0.5rem 0;}
+.lunchDataBox3{height:9rem;}
+
+.lunchStateTit{width:100%;display:flex;justify-content: space-between;border-bottom: 1px solid #ccc;}
+.lunchDataTit{width:100%;height: 2rem;font-size: 1.2rem;font-weight: 700;}
+
+.lunchData{height: 2rem;display: flex;align-items: center;}
+.lunchData1{width: 25%;justify-content: center;}
+.lunchData2{width: 33%;justify-content: left;}
+.lunchData3{width: 16rem;height: 2rem;line-height: 2.4rem;font-size: 1rem;text-align: right;font-weight: 400;justify-content: center;}
+
+/* 대나무숲 */
+.content{width: 100%;display: flex;flex-wrap: wrap;}
+.content1{}
+.input{width: 100%;margin: 0.5rem 0;}
+.input input[type="text"]{border:1px solid #ccc;}
+
+.textareaBox{width:100%;display: flex;flex-wrap: wrap;}
+.textareaBox1{}
+.textareaTit{display:block; width:100%;}
+.textarea{width:90%; height:8rem; padding: 1rem; border: 1px solid #ccc;}
+
+
+@media screen and (max-width:1024px) {
+section{width: 100%;}
+/*공통*/
+h2{font-size:1.4rem;}
+h3{padding: 0 0.2rem;}
+.btn1{width:42%; height:3rem; padding: 0 1rem;}
+.btn2{width:30%;background: #FF9800;color: #fff;}
+.btn3{width: 4rem;height: 2rem;line-height: 0rem;border: 1px solid #ccc;}
+.Select1{width: 57%;height:3rem;margin-right: 0.1rem;border: 1px solid #CCC;background:url(/images/lunch/ico_select01.png) no-repeat 95% center;}
+.Select1 option {padding: 0.5rem;}
+
+/* 배너 */
+.topBanner{padding:1rem;}
+.topBannerTxt1{font-size:1.6rem}
+.topBannerTxt2{height: 38%;font-size:1.4rem;font-weight: 400;}
+
+/* 메뉴 */
+.menuBoard .menuLunch{height: 42rem;margin-top:2rem;border-bottom: 1rem solid #f1f1f1;padding:0;}
+.menuBoard .menuLunch .lunchTit {height: 2rem;margin: 0;padding:0 0.2rem;}
+.lunchImg{width:100%;margin:0;}
+.lunchRight{width:100%;padding: 0 0.2rem;}
+
+.lunchStateTit{font-size:1.2rem;padding:0 0.2rem;border-bottom:none;}
+.lunchDataTit{height:1rem;}
+.lunchDataBox1 {height: 2rem;padding:0 0.2rem;}
+.lunchData2{width: 100%;justify-content: right;}
+.lunchData3{width:100%;line-height: 2rem;justify-content: right;}
+.lunchData4{width: 50%;justify-content: left;}
+
+/* 대나무숲 */
+.content{padding:0 0.2rem;}
+.content1{}
+.input{width: 100%;margin: 0.5rem 0;}
+.input input[type="text"]{border:1px solid #ccc;}
+
+.textareaBox{width:100%;display: flex;flex-wrap: wrap;}
+.textareaBox1{}
+.textareaTit{display:block; width:100%;}
+.textarea{width:70%; height:6rem; padding: 1rem; border: 1px solid #ccc;}
+
+.commentTotal{width: 100%;height: 1.5rem;text-align: right;margin-top: 1rem;padding: 0 0.2rem 0 0;}
+
+.comment{width: 100%;margin-top:.5rem;}
+.commentTit{font-size:1.1rem;}
+
+.comment li{padding:.5rem;}
+.comment li:nth-child(2n-1){background-color:#f1f1f1;}
+.comt{width:100%;}
+.comt1{font-weight:500;color:#2a2a2a;font-size:1.1rem;}
+.comt2{padding: 0.2rem;}
+.comt3{text-align:right;font-size:.9rem;color:#ccc;font-weight:400;}
+.comt4{text-align: right;font-size: .9rem;display: flex;justify-content: flex-end;margin-top: 0.5rem;}
+.comt4 .btn3 .likeIco{font-size:1.1rem;}
+
+}

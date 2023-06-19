@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ione.landing.cmm.mapper.CmmMapper">
+	<!-- 호미 홈페이지 컨텐츠 로그 저장(Hobiti 등등) -->
+	<insert id="insertContensLog" parameterType="map">
+		INSERT /*insertContensLog*/
+		INTO tb_contens_log(
+			  cn_req_ip
+			, cn_req_brwsr
+			, cn_type
+			, cn_text
+			, cn_dt
+		)
+		VALUES (
+			  #{cnReqIp}
+			, #{cnReqBrwsr}
+			, #{cnType}
+			, #{cnText}
+			, NOW()
+		)
+	</insert>
+	
+	<!-- 호미 홈페이지 이메일 문의 기록 삽입 -->
+	<insert id="insertInqryEmail" parameterType="map">
+		INSERT /*insertInqryEmail*/
+		INTO tb_inqryEmail(
+			  inqry_nm
+			, telno
+			, cn
+			, inqry_req_ip
+			, inqry_req_brwsr
+			, email_adres
+			, regist_dt
+		)
+		VALUES (
+			  #{sj}
+			, #{telno}
+			, #{cn}
+			, #{inqryReqIp}
+			, #{inqryReqBrwsr}
+			, #{email}
+			, NOW()
+		)
+	</insert>
+	
+	<!-- 호비티아이 백분율 조회 -->
+	<select id="selectHobitiPercentage" resultType="camelMap">
+		SELECT /*selectHobitiPercentage*/
+	           cn_text
+	         , COUNT(*) type_sum
+		     , CONCAT(ROUND((COUNT(*) / (SELECT COUNT(*) FROM tb_contens_log)) * 100, 1), '%') AS percentage
+	     FROM tb_contens_log
+	    WHERE cn_type = 'HOBITI'
+	    GROUP BY cn_text
+	</select>
+</mapper>
+
+
+
