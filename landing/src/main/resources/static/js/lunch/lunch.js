@@ -1,3 +1,5 @@
+//git test
+
 $(function(){
 	fn_selectBoard();
 	fn_selectBoardComment();
